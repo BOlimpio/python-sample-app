@@ -1,12 +1,16 @@
 services:
   productservice:
     build: product-service
+    links:
+      - "db"
   web:
     build: nginx
     ports:
       - "88:88"
-  database:
+  db:
     build: backoffice-db
+    container_name: backoffice-db
+    restart: always
     ports:
         - "3306:3036"
     environment:
