@@ -1,7 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
 
-#some notes to connect with sql
 # connection = mysql.connector.connect(
 #     user = 'MainUser', password = 'MainPassword', host = 'backoffice-db', port = '3306', database = 'Backoffice'
 # )
