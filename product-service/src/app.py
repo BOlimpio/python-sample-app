@@ -1,17 +1,27 @@
+from multiprocessing import connection
 from flask import Flask, jsonify, request
+import mysql.connector
 
 
-products = [
-    {'id': 1, 'name': 'Product 1'},
-    {'id': 2, 'name': 'Product 2'}
-]
+# products = [
+#     {'id': 1, 'name': 'Product 1'},
+#     {'id': 2, 'name': 'Product 2'}
+# ]
 
 app = Flask(__name__)
+
 
 
 # curl -v http://localhost:5000/products
 @app.route('/products')
 def get_products():
+    connection = mysql.connector.connect(user = 'root', password = 'root', host = 'mysql', port = "3306", database = 'db')
+    print ("DB Connected")
+
+    cursor = connection.cursor()
+    cursor.execute ('Select * from products')
+    products = cursor.fetchall()
+    connection.close()
     return jsonify(products)
 
 

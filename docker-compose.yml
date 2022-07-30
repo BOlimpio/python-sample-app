@@ -1,27 +1,21 @@
 services:
   productservice:
     build: product-service
-    links:
-      - "db"
+    depends_on:
+      - mysql
   web:
     build: nginx
     ports:
       - "88:88"
-  db:
-    build: backoffice-db
-    container_name: backoffice-db
-    restart: always
-    ports:
-        - "3306:3036"
-    environment:
-        MYSQL_ROOT_PASSWORD: RootPassword
-        MYSQL_DATABASE: Backoffice
-        MYSQL_USER: MainUser
-        MYSQL_PASSWORD: MainPassword
-    
-    volumes:
-      - db-volume:/var/lib/mysql
+    depends_on:
+      - productservice
 
-volumes:
-    db-volume:
+  mysql:
+    build: ./mysql/
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "3306:3306"
 
