@@ -1,2 +1,3 @@
-# create CRUD db methods
-# create | read | update | delete
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
