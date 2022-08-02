@@ -1,6 +1,6 @@
 services:
-  productservice:
-    build: product-service
+  characterservice:
+    build: character-service
     volumes:
       - "./config:/config"
     secrets:
