@@ -17,6 +17,11 @@ With this application you will understand some **Python** :snake: and **Docker**
 
 ## The following dependencies were used to run the application:
 
+In some cases you may get an error installing the mysqlclient dependency, so run the following command before running requirements:
+```sh
+sudo apt-get install -y python3.7-dev
+```
+
 * Flask==2.1.0
 * Flask-SQLAlchemy==2.4.4
 * flask_mysqldb==0.2.0

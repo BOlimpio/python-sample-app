@@ -1,4 +1,5 @@
 Flask==2.1.0
+python3.7-dev
 Flask-SQLAlchemy==2.4.4
 flask_mysqldb==0.2.0
 SQLAlchemy<1.4
